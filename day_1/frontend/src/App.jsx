@@ -9,7 +9,8 @@ function App() {
 
   const getJokes = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/jokes');
+      const response = await axios.get('/api/jokes');
+      setJokes(response.data)
       console.log(response);
     } catch (error) {
       console.error(error);
@@ -27,10 +28,15 @@ function App() {
 
   return (
     <>
-      <h1>hello duck</h1>
+      <h1>****</h1>
       <h2>total jokes : {jokes.length}</h2>
-      {jokes.map(joke => <div key={joke.id}>
-        {joke.joke}
+      {jokes.map(joke => <div key={joke.id} style={{ display: 'flex', gap: '8px' }}>
+        <div>
+          {joke.id}:
+        </div>
+        <div>
+          {joke.joke}
+        </div>
       </div>)}
     </>
   )
